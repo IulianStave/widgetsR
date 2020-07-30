@@ -1,27 +1,22 @@
 import React, { useState } from "react";
 
 const Accordion = ({ items }) => {
-  // class Accordion extends React.Component {
-  // this.state = { activeIndex: 0 };
   const [activeIndex, setActiveIndex] = useState(null);
 
   const onTitleClick = (index) => {
-    console.log("Title clicked ", index);
-    // this.setState({activeIndex: index});
     setActiveIndex(index);
   };
+
   const renderedItems = items.map((item, index) => {
+    const active = index === activeIndex ? "active" : "";
+
     return (
       <React.Fragment key={item.title}>
-        <div
-          // onClick={()=>{console.log('Title clicked', index)}}
-          onClick={() => onTitleClick(index)}
-          className="title active"
-        >
+        <div onClick={() => onTitleClick(index)} className={`title ${active}`}>
           <i className="dropdown icon"></i>
           {item.title}
         </div>
-        <div className="content active">
+        <div className={`content ${active}`}>
           <p>{item.content}</p>
         </div>
       </React.Fragment>
@@ -31,7 +26,7 @@ const Accordion = ({ items }) => {
   return (
     <div className="ui styled accordion">
       {renderedItems}
-      <h1>{activeIndex}</h1>
+      {/* <h1>{activeIndex}</h1> */}
     </div>
   );
 };
