@@ -7,6 +7,11 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   useEffect( () => {
     document.body.addEventListener('click', (event) => {
       // console.log(event.target);
+      if (ref.current.contains(event.target)){
+        // we return early if user clicks inside ui form
+        // to skip closing the dropdown
+        return;
+      }
       setOpen(false);
     }
     );
@@ -29,7 +34,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
     );
   });
 
-  console.log(ref.current);
+  // console.log(ref.current);
 
   return (
     <div ref={ref} className="ui form">
