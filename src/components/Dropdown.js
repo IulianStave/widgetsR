@@ -4,24 +4,22 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
-  useEffect( () => {
+  useEffect(() => {
     const onBodyClick = (event) => {
-      if (ref.current.contains(event.target)){
+      if (ref.current.contains(event.target)) {
         // we return early if user clicks inside ui form
         // to skip closing the dropdown
         return;
       }
       setOpen(false);
-    }
-    
-    document.body.addEventListener('click', onBodyClick);
-    return () => {
-      document.body.removeEventListener('click', onBodyClick);
-    }
+    };
 
+    document.body.addEventListener("click", onBodyClick);
+    return () => {
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
-  
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
       return null;
@@ -50,12 +48,14 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
         >
           <i className="dropdown icon"></i>
           <div className="text"> {selected.label} </div>
-          <div className={`menu ${open ? 'visible transition' : ''}`}>
+          <div className={`menu ${open ? "visible transition" : ""}`}>
             {renderedOptions}
           </div>
-
         </div>
       </div>
+      <div
+        style={{ color: `${selected.value}` }}
+      >{`This text is ${selected.value}`}</div>
     </div>
   );
 };
