@@ -20,7 +20,7 @@ export default () => {
   return (
     <div className="ui container">
       <Search />
-      <Accordion items={items} />
+      {/* <Accordion items={items} /> */}
     </div>
   ) 
 
