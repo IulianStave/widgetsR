@@ -5,8 +5,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect( () => {
-    document.body.addEventListener('click', (event) => {
-      // console.log(event.target);
+    const onBodyClick = (event) => {
       if (ref.current.contains(event.target)){
         // we return early if user clicks inside ui form
         // to skip closing the dropdown
@@ -14,7 +13,12 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       }
       setOpen(false);
     }
-    );
+    
+    document.body.addEventListener('click', onBodyClick);
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    }
+
   }, []);
 
   
