@@ -56,6 +56,9 @@ export default () => {
           options={options}
         />
       ) : null}
+    <div className="ui segement">
+      <Translate />
+    </div>
     </div>
   );
 };
