@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
 const items = [
   {
@@ -38,19 +39,23 @@ export default () => {
   const [showDropdown, setShowDropdown] = useState(true);
   return (
     <div className="ui container">
-      <button onClick = { () => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
+      <div className="ui header ">
+        <button
+          onClick={() => setShowDropdown(!showDropdown)}
+          className="ui button"
+        >  <i className="settings icon"></i>
+          Toggle Dropdown
+        </button>
+      </div>
       {/* <Search /> */}
       {/* <Accordion items={items} /> */}
-      {showDropdown? (
-
-      
-      <Dropdown
-        selected={selected}
-        onSelectedChange={setSelected}
-        options={options}
-      />): null}
+      {showDropdown ? (
+        <Dropdown
+          selected={selected}
+          onSelectedChange={setSelected}
+          options={options}
+        />
+      ) : null}
     </div>
   );
 };
