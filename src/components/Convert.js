@@ -35,7 +35,7 @@ const Convert = ({ language, text }) => {
     };
     doTranslation();
   }, [language, debouncedText]); // [language, text]);
-  return <div>{translated}</div>;
+  return <div dangerouslySetInnerHTML={{__html:translated}}>{}</div>;
 };
 
 export default Convert;
