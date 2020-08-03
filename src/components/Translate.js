@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
+import Convert from "./Convert";
 
 const options = [
+
+  {
+    label: "Russian",
+    value: "ru",
+  },
+  {
+    label: "French",
+    value: "fr",
+  },
   {
     label: "Afrikaans",
     value: "af",
@@ -41,6 +51,9 @@ const Translate = () => {
         options={options}
         label={translateLabel}
       />
+      <hr/>
+      <h3 className="ui header">Output</h3>
+      <Convert language={language} text ={text}/>
     </div>
   );
 };
