@@ -54,19 +54,19 @@ export default () => {
       {/* <Search /> */}
       {/* <Accordion items={items} /> */}
       {showDropdown ? (
-        <Dropdown
-          selected={selected}
-          onSelectedChange={setSelected}
-          options={options}
-          label={colorLabel}
-        />
-      ) : null}
-    <hr/>
-    <ColoredLine lineColor='red'/>
-    <ColoredLine lineColor={color}/>
-    <div className="ui segment">
+        // <Dropdown
+        //   selected={selected}
+        //   onSelectedChange={setSelected}
+        //   options={options}
+        //   label={colorLabel}
+        // />
+        <div className="ui segment">
       <Translate />
     </div>
+      ) : null}
+    {/* <ColoredLine lineColor='red'/>
+    <ColoredLine lineColor={color}/> */}
+    
     </div>
   );
 };
