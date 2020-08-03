@@ -3,6 +3,7 @@ import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
+import ColoredLine from "./components/ColoredLine";
 
 const items = [
   {
@@ -37,6 +38,9 @@ const options = [
 export default () => {
   const [selected, setSelected] = useState(options[0]);
   const [showDropdown, setShowDropdown] = useState(true);
+
+  const colorLabel = 'Select a color';
+  const color = 'lightblue';
   return (
     <div className="ui container">
       <div className="ui header ">
@@ -54,9 +58,13 @@ export default () => {
           selected={selected}
           onSelectedChange={setSelected}
           options={options}
+          label={colorLabel}
         />
       ) : null}
-    <div className="ui segement">
+    <hr/>
+    <ColoredLine lineColor='red'/>
+    <ColoredLine lineColor={color}/>
+    <div className="ui segment">
       <Translate />
     </div>
     </div>
