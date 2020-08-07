@@ -3,7 +3,9 @@ import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
-import ColoredLine from "./components/ColoredLine";
+// import ColoredLine from "./components/ColoredLine";
+import Route from "./components/Route";
+import Header from "./components/Header";
 
 const items = [
   {
@@ -37,36 +39,30 @@ const options = [
 
 export default () => {
   const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
+  // const [showDropdown, setShowDropdown] = useState(true);
 
-  const colorLabel = 'Select a color';
-  const color = 'lightblue';
+  const colorLabel = "Select a color";
+  const color = "lightblue";
   return (
     <div className="ui container">
-      <div className="ui header ">
-        <button
-          onClick={() => setShowDropdown(!showDropdown)}
-          className="ui button"
-        >  <i className="settings icon"></i>
-          Toggle Dropdown
-        </button>
-      </div>
-      {/* <Search /> */}
-      {/* <Accordion items={items} /> */}
-      {showDropdown ? (
-        // <Dropdown
-        //   selected={selected}
-        //   onSelectedChange={setSelected}
-        //   options={options}
-        //   label={colorLabel}
-        // />
-        <div className="ui segment">
-      <Translate />
-    </div>
-      ) : null}
-    {/* <ColoredLine lineColor='red'/>
-    <ColoredLine lineColor={color}/> */}
-    
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          label={colorLabel}
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 };
